@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calm in the Storm</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Start Screen -->
+  <div id="start-screen" class="screen active">
+    <h1>☁ Calm in the Storm ☁</h1>
+    <label>Enter your name:</label><br>
+    <input type="text" id="player-name" placeholder="Your name here"/><br>
+    <p>How happy are you right now?</p>
+    <div id="before-rating" class="star-rating"></div><br>
+    <button onclick="startGame()">Start Game</button>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="screen">
+    <div id="score">Stars Collected: 0</div>
+    <canvas id="gameCanvas"></canvas>
+    <div id="controls">
+      <button onclick="moveLeft()">⬅️ Left</button>
+      <button onclick="moveRight()">➡️ Right</button>
+    </div>
+    <button onclick="quitGame()">Quit</button>
+  </div>
+
+  <!-- Popup for scenario/questions -->
+  <div id="popup" class="popup hidden">
+    <p id="scenario-text"></p>
+    <button onclick="nextTip()">Next</button>
+  </div>
+
+  <!-- Result Screen -->
+  <div id="result-screen" class="screen">
+    <h2>🌟 Thank You 🌟</h2>
+    <p id="result-text"></p>
+    <p>How happy are you now?</p>
+    <div id="after-rating" class="star-rating"></div><br>
+    <button onclick="showFinal()">Finish</button>
+  </div>
+
+  <!-- Final Message -->
+  <div id="final-screen" class="screen">
+    <h2>💙 Stay Strong 💙</h2>
+    <p id="final-message"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
