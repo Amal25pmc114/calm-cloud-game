@@ -21,7 +21,12 @@ let raindrops = [];
 const scenarios = [
   { scenario: "You feel anxious after a disaster alert. What do you do?", tip: "Take slow deep breaths to calm yourself." },
   { scenario: "You feel isolated after an emergency. What now?", tip: "Reach out to a friend or support group." },
-  { scenario: "Stress keeps you awake. What could help?", tip: "Practice mindfulness or write your thoughts down." }
+  { scenario: "Stress keeps you awake. What could help?", tip: "Practice mindfulness or write your thoughts down." },
+  { scenario: "You find it hard to sleep because of anxious thoughts.", tip: "Try deep breathing or meditation before bed." },
+  { scenario: "Feeling isolated and alone", tip: "Reach out to a friend or family member to talk." },
+  { scenario: "Your mind is flooded with worries", tip: "Focus on what you can control, one small step at a time." },
+  { scenario: "Feeling overwhelmed by news", tip: "Limit your media exposure and do something calming." },
+  { scenario: "You notice you’re forgetting self-care.", tip: "Remember to nourish your body with good food and rest." },
 ];
 let currentScenario = null;
 
