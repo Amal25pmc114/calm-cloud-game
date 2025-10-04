@@ -19,14 +19,26 @@ let raindrops = [];
 
 // Scenarios and tips
 const scenarios = [
-  { scenario: "You feel anxious after a disaster alert. What do you do?", tip: "Take slow deep breaths to calm yourself." },
-  { scenario: "You feel isolated after an emergency. What now?", tip: "Reach out to a friend or support group." },
-  { scenario: "Stress keeps you awake. What could help?", tip: "Practice mindfulness or write your thoughts down." },
-  { scenario: "You find it hard to sleep because of anxious thoughts.", tip: "Try deep breathing or meditation before bed." },
-  { scenario: "Feeling isolated and alone", tip: "Reach out to a friend or family member to talk." },
-  { scenario: "Your mind is flooded with worries", tip: "Focus on what you can control, one small step at a time." },
-  { scenario: "Feeling overwhelmed by news", tip: "Limit your media exposure and do something calming." },
-  { scenario: "You notice you’re forgetting self-care.", tip: "Remember to nourish your body with good food and rest." }
+  { scenario: "You feel nervous after hearing bad news.", tip: "Take a deep breath and remind yourself — you are safe right now." },
+  { scenario: "You miss something you lost in the disaster.", tip: "Think of one small thing you still have that brings you comfort." },
+  { scenario: "Everyone around you seems stressed.", tip:  "Stay calm and breathe slowly — your staying calm helps others too." },
+  { scenario: "You haven’t smiled in a while.", tip: "Think of one kind or happy memory — let it make you smile again."  },
+  { scenario: "A loud sound brings back scary memories.", tip:  "Close your eyes and say softly, ‘That moment was in the past. I’m safe now.’" },
+  { scenario: "You’ve been helping others all day.", tip: "Pause, drink some water, and rest — you deserve care too."  },
+  { scenario: "You feel tired of seeing sad news.", tip: "Take a short break. Look outside, stretch, or notice something peaceful."  },
+  { scenario: "You can’t fall asleep easily.", tip: "Try slow breathing — in for 4 seconds, out for 4 seconds." },
+  { scenario: "Crowds and noise make you uneasy.", tip: "Step aside for a moment and breathe quietly until you feel steady." },
+  { scenario: "You feel like no one understands you.", tip: "Talk to someone you trust — sharing helps lighten your heart." },
+  { scenario: "You miss your old routine.", tip: "Make one small new habit — a cup of tea, music, or a walk." },
+  { scenario: "You’re surrounded by panic.", tip: "Repeat to yourself: ‘I am calm, I am safe.’" },
+  { scenario: "You woke up feeling sad.", tip: "Be gentle with yourself — feelings change, calm will return."  },
+  { scenario: "You miss your favorite peaceful place.", tip: "Close your eyes and imagine being there for a moment." },
+  { scenario:  "You feel like you must fix everything.", tip: "You’re doing enough — even small help makes a difference."  },
+  { scenario: "Waiting for updates makes you anxious.", tip: "Look around — name 3 things you see, 2 you hear, 1 you feel." },
+  { scenario: "You suddenly feel like crying.", tip: "It’s okay to cry — tears help release stress." },
+  { scenario: "You helped someone smile today.", tip: "Take a moment to smile too — you deserve that peace." },
+  { scenario: "You keep watching for danger even when things are calm.", tip: "Tell yourself gently: ‘I am safe right now.’" },
+  { scenario: "You feel bad for being calm when others are upset.", tip: "Peace is not selfish — it spreads calm around you." }
 ];
 let currentScenario = null;
 
@@ -101,7 +113,7 @@ function updateGame() {
     }
   }
 
-  document.getElementById("score").innerText = `Stars Collected: ${starsCollected}`;
+  document.getElementById("score").innerText = `Drops Collected: ${starsCollected}`;
 }
 
 function moveLeft() { if (!paused && cloud.x > 0) cloud.x -= 20; }
@@ -119,7 +131,7 @@ function nextTip() {
   setTimeout(() => {
     document.getElementById("popup").classList.add("hidden");
     paused = false;
-  }, 1000);
+  }, 10000);
 }
 
 // Quit game
