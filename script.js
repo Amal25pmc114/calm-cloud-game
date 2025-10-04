@@ -26,7 +26,7 @@ const scenarios = [
   { scenario: "Feeling isolated and alone", tip: "Reach out to a friend or family member to talk." },
   { scenario: "Your mind is flooded with worries", tip: "Focus on what you can control, one small step at a time." },
   { scenario: "Feeling overwhelmed by news", tip: "Limit your media exposure and do something calming." },
-  { scenario: "You notice you’re forgetting self-care.", tip: "Remember to nourish your body with good food and rest." },
+  { scenario: "You notice you’re forgetting self-care.", tip: "Remember to nourish your body with good food and rest." }
 ];
 let currentScenario = null;
 
