@@ -113,7 +113,7 @@ function updateGame() {
     }
   }
 
-  document.getElementById("score").innerText = `Stars Collected: ${starsCollected}`;
+  document.getElementById("score").innerText = `Drops Collected: ${starsCollected}`;
 }
 
 function moveLeft() { if (!paused && cloud.x > 0) cloud.x -= 20; }
@@ -131,7 +131,7 @@ function nextTip() {
   setTimeout(() => {
     document.getElementById("popup").classList.add("hidden");
     paused = false;
-  }, 1000);
+  }, 7000);
 }
 
 // Quit game
