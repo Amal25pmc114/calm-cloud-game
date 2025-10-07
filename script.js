@@ -43,25 +43,40 @@ const scenarios = [
 let currentScenario = null;
 
 // ⭐ Star rating system
-function createStars(containerId, isBefore) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-  for (let i = 1; i <= 5; i++) {
-    const star = document.createElement("span");
-    star.innerHTML = "★";
-    star.classList.add("star");
-    star.onclick = () => {
-      if (isBefore) happinessBefore = i;
-      else happinessAfter = i;
-      updateStars(containerId, i);
-    };
-    container.appendChild(star);
-  }
-}
-function updateStars(containerId, count) {
-  const stars = document.querySelectorAll(`#${containerId} .star`);
-  stars.forEach((star, i) => {
-    star.classList.toggle("selected", i < count);
+// 🎮 Function to show a random scenario
+function showRandomScenario() {
+  // Pause the game (set gameRunning = false or similar flag)
+  gamePaused = true;
+
+  // Select a random scenario
+  const randomIndex = Math.floor(Math.random() * scenarios.length);
+  const selected = scenarios[randomIndex];
+
+  // Show popup with scenario and continue button
+  const popup = document.createElement("div");
+  popup.className = "popup";
+  popup.innerHTML = `
+    <div class="popup-content">
+      <h3>🧠 Scenario</h3>
+      <p>${selected.scenario}</p>
+      <button id="showTipBtn">Reflect</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  // When player clicks "Reflect", show tip
+  document.getElementById("showTipBtn").addEventListener("click", () => {
+    popup.innerHTML = `
+      <div class="popup-content">
+        <h3>💡 Tip</h3>
+        <p>${selected.tip}</p>
+        <button id="continueGameBtn">Continue</button>
+      </div>
+    `;
+    document.getElementById("continueGameBtn").addEventListener("click", () => {
+      popup.remove();
+      gamePaused = false; // Resume game
+    });
   });
 }
 
