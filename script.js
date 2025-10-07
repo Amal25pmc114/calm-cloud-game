@@ -42,19 +42,27 @@ const scenarios = [
 ];
 let currentScenario = null;
 
-function showScenario() {
-  paused = true;
-  currentScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
-  document.getElementById("scenario-text").innerText = currentScenario.scenario;
-  document.getElementById("popup").classList.remove("hidden");
+// ⭐ Star rating system
+function createStars(containerId, isBefore) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement("span");
+    star.innerHTML = "★";
+    star.classList.add("star");
+    star.onclick = () => {
+      if (isBefore) happinessBefore = i;
+      else happinessAfter = i;
+      updateStars(containerId, i);
+    };
+    container.appendChild(star);
+  }
 }
-
-function nextTip() {
-  document.getElementById("scenario-text").innerText = currentScenario.tip;
-  setTimeout(() => {
-    document.getElementById("popup").classList.add("hidden");
-    paused = false;
-  }, 2000);
+function updateStars(containerId, count) {
+  const stars = document.querySelectorAll(`#${containerId} .star`);
+  stars.forEach((star, i) => {
+    star.classList.toggle("selected", i < count);
+  });
 }
 
 // Start Game
@@ -105,7 +113,7 @@ function updateGame() {
     }
   }
 
-  document.getElementById("score").innerText = `Drops Collected: ${starsCollected}`;
+  document.getElementById("score").innerText = `Stars Collected: ${starsCollected}`;
 }
 
 function moveLeft() { if (!paused && cloud.x > 0) cloud.x -= 20; }
@@ -123,7 +131,7 @@ function nextTip() {
   setTimeout(() => {
     document.getElementById("popup").classList.add("hidden");
     paused = false;
-  }, 10000);
+  }, 1000);
 }
 
 // Quit game
