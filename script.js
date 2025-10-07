@@ -42,42 +42,19 @@ const scenarios = [
 ];
 let currentScenario = null;
 
-// ⭐ Star rating system
-// 🎮 Function to show a random scenario
-function showRandomScenario() {
-  // Pause the game (set gameRunning = false or similar flag)
-  gamePaused = true;
+function showScenario() {
+  paused = true;
+  currentScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+  document.getElementById("scenario-text").innerText = currentScenario.scenario;
+  document.getElementById("popup").classList.remove("hidden");
+}
 
-  // Select a random scenario
-  const randomIndex = Math.floor(Math.random() * scenarios.length);
-  const selected = scenarios[randomIndex];
-
-  // Show popup with scenario and continue button
-  const popup = document.createElement("div");
-  popup.className = "popup";
-  popup.innerHTML = `
-    <div class="popup-content">
-      <h3>🧠 Scenario</h3>
-      <p>${selected.scenario}</p>
-      <button id="showTipBtn">Reflect</button>
-    </div>
-  `;
-  document.body.appendChild(popup);
-
-  // When player clicks "Reflect", show tip
-  document.getElementById("showTipBtn").addEventListener("click", () => {
-    popup.innerHTML = `
-      <div class="popup-content">
-        <h3>💡 Tip</h3>
-        <p>${selected.tip}</p>
-        <button id="continueGameBtn">Continue</button>
-      </div>
-    `;
-    document.getElementById("continueGameBtn").addEventListener("click", () => {
-      popup.remove();
-      gamePaused = false; // Resume game
-    });
-  });
+function nextTip() {
+  document.getElementById("scenario-text").innerText = currentScenario.tip;
+  setTimeout(() => {
+    document.getElementById("popup").classList.add("hidden");
+    paused = false;
+  }, 2000);
 }
 
 // Start Game
